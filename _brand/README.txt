@@ -30,3 +30,9 @@ In this folder
 
 Colors    Ink #14172B   Light #F4F5F7   Coral #F0553A
 Type      Wordmark letters are Outfit ExtraBold (SIL Open Font License)
+
+Surface logos (assets/img/surfaces/), third-party trademarks used to identify each platform
+  cli.png, discord.png, grok.jpg, muse.png, slack.png   from tutorways/Documentation docs/assets/gallery/
+  jupyter.svg        official mark, github.com/jupyter/design logos/Logo Mark/logomark-orangebody-greyplanets
+  claude-duet.svg    claude.com/static/claude-duet/app-icon.svg
+  dots-chatgpt.svg   ChatGPT favicon (chatgpt.com). Stand-in: OpenAI publishes no Dots-specific mark yet. Replace when one exists.

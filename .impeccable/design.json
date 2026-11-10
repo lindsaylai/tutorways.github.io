@@ -1,0 +1,386 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-09T00:00:00Z",
+  "title": "Design System: TutorWays",
+  "extensions": {
+    "colorMeta": {
+      "ink": {
+        "role": "primary",
+        "displayName": "Route Ink",
+        "canonical": "oklch(21.3% 0.04 276)",
+        "tonalRamp": [
+          "oklch(15% 0.006 276)",
+          "oklch(26% 0.018 276)",
+          "oklch(37% 0.031 276)",
+          "oklch(48% 0.040 276)",
+          "oklch(60% 0.040 276)",
+          "oklch(72% 0.032 276)",
+          "oklch(84% 0.018 276)",
+          "oklch(95% 0.006 276)"
+        ]
+      },
+      "coral": {
+        "role": "secondary",
+        "displayName": "Signal Coral",
+        "canonical": "oklch(65.5% 0.195 32)",
+        "tonalRamp": [
+          "oklch(15% 0.029 32)",
+          "oklch(26% 0.089 32)",
+          "oklch(37% 0.150 32)",
+          "oklch(48% 0.195 32)",
+          "oklch(60% 0.195 32)",
+          "oklch(72% 0.156 32)",
+          "oklch(84% 0.089 32)",
+          "oklch(95% 0.029 32)"
+        ]
+      },
+      "light": {
+        "role": "neutral",
+        "displayName": "Paper Light",
+        "canonical": "oklch(97.0% 0.003 265)",
+        "tonalRamp": [
+          "oklch(15% 0.003 265)",
+          "oklch(26% 0.003 265)",
+          "oklch(37% 0.003 265)",
+          "oklch(48% 0.003 265)",
+          "oklch(60% 0.003 265)",
+          "oklch(72% 0.003 265)",
+          "oklch(84% 0.003 265)",
+          "oklch(95% 0.003 265)"
+        ]
+      },
+      "white": {
+        "role": "neutral",
+        "displayName": "Card White",
+        "canonical": "oklch(100% 0 0)",
+        "tonalRamp": [
+          "oklch(15% 0.000 0)",
+          "oklch(26% 0.000 0)",
+          "oklch(37% 0.000 0)",
+          "oklch(48% 0.000 0)",
+          "oklch(60% 0.000 0)",
+          "oklch(72% 0.000 0)",
+          "oklch(84% 0.000 0)",
+          "oklch(95% 0.000 0)"
+        ]
+      },
+      "ink-soft": {
+        "role": "neutral",
+        "displayName": "Slate",
+        "canonical": "oklch(37.6% 0.05 276)",
+        "tonalRamp": [
+          "oklch(15% 0.007 276)",
+          "oklch(26% 0.023 276)",
+          "oklch(37% 0.039 276)",
+          "oklch(48% 0.050 276)",
+          "oklch(60% 0.050 276)",
+          "oklch(72% 0.040 276)",
+          "oklch(84% 0.023 276)",
+          "oklch(95% 0.007 276)"
+        ]
+      },
+      "light-soft": {
+        "role": "neutral",
+        "displayName": "Mist",
+        "canonical": "oklch(83.5% 0.023 275)",
+        "tonalRamp": [
+          "oklch(15% 0.003 275)",
+          "oklch(26% 0.011 275)",
+          "oklch(37% 0.018 275)",
+          "oklch(48% 0.023 275)",
+          "oklch(60% 0.023 275)",
+          "oklch(72% 0.018 275)",
+          "oklch(84% 0.011 275)",
+          "oklch(95% 0.003 275)"
+        ]
+      },
+      "rule-light": {
+        "role": "neutral",
+        "displayName": "Rule Light",
+        "canonical": "oklch(89.5% 0.013 271)",
+        "tonalRamp": [
+          "oklch(15% 0.002 271)",
+          "oklch(26% 0.006 271)",
+          "oklch(37% 0.010 271)",
+          "oklch(48% 0.013 271)",
+          "oklch(60% 0.013 271)",
+          "oklch(72% 0.010 271)",
+          "oklch(84% 0.006 271)",
+          "oklch(95% 0.002 271)"
+        ]
+      },
+      "rule-ink": {
+        "role": "neutral",
+        "displayName": "Rule Ink",
+        "canonical": "oklch(32.4% 0.056 276)",
+        "tonalRamp": [
+          "oklch(15% 0.008 276)",
+          "oklch(26% 0.026 276)",
+          "oklch(37% 0.043 276)",
+          "oklch(48% 0.056 276)",
+          "oklch(60% 0.056 276)",
+          "oklch(72% 0.045 276)",
+          "oklch(84% 0.026 276)",
+          "oklch(95% 0.008 276)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Hero headline only."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section headlines for Benchmark, Ferret and Close."
+      },
+      "headline-story": {
+        "displayName": "Headline Story",
+        "purpose": "Surface-story section heads."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Each step's surface name."
+      },
+      "title-small": {
+        "displayName": "Title Small",
+        "purpose": "The hero picker's question."
+      },
+      "lede": {
+        "displayName": "Lede",
+        "purpose": "Paragraph under the hero and Ferret headlines."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Running text, 54 to 60ch."
+      },
+      "action": {
+        "displayName": "Action",
+        "purpose": "Buttons, action links, definition terms, panel title bars."
+      },
+      "nav": {
+        "displayName": "Nav",
+        "purpose": "Header and footer links."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Sentence-case group labels in the ground's soft colour."
+      },
+      "mono": {
+        "displayName": "Mono",
+        "purpose": "Code, commands, terminal output."
+      }
+    },
+    "shadows": [
+      {
+        "name": "panel-light",
+        "value": "0 24px 48px -28px rgba(20, 23, 43, .45)",
+        "purpose": "Mock product panels on the Light ground."
+      },
+      {
+        "name": "panel-ink",
+        "value": "0 24px 60px -24px rgba(0, 0, 0, .7)",
+        "purpose": "Mock product panels on the Ink ground."
+      },
+      {
+        "name": "exchange",
+        "value": "0 30px 60px -28px rgba(20, 23, 43, .55)",
+        "purpose": "The Ferret exchange on Coral."
+      },
+      {
+        "name": "active-ring",
+        "value": "0 0 0 6px #F0553A",
+        "purpose": "Active station state ring; not elevation."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-route",
+        "value": "cubic-bezier(.16, 1, .3, 1)",
+        "purpose": "All state movement: stations, panels, picker rows, arrows."
+      },
+      {
+        "name": "duration-color",
+        "value": "0.2s",
+        "purpose": "Button background and arrow opacity changes."
+      },
+      {
+        "name": "duration-nudge",
+        "value": "0.35s",
+        "purpose": "Arrow slide and picker row indent."
+      },
+      {
+        "name": "duration-panel",
+        "value": "0.45s opacity / 0.6s transform",
+        "purpose": "Sticky stage panel swap (fade plus 24px rise)."
+      },
+      {
+        "name": "duration-station",
+        "value": "0.5s",
+        "purpose": "Station activation scale."
+      },
+      {
+        "name": "draw-on",
+        "value": "scaleY(0 to 1), view timeline, range entry 30vh to exit 30vh",
+        "purpose": "Stroke draws with scroll where animation-timeline is supported and motion is allowed; otherwise fully drawn."
+      },
+      {
+        "name": "activation-line",
+        "value": "IntersectionObserver rootMargin -45% 0px -55% 0px",
+        "purpose": "A step becomes active when it crosses 45% of the viewport height."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "xs",
+        "value": "420px"
+      },
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "stage",
+        "value": "960px wide and 620px tall"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Solid square Ink button with a trailing arrow; the default primary action.",
+      "html": "<a class=\"ds-btn\" href=\"#\">How the benchmark works<svg viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" aria-hidden=\"true\" style=\"fill:currentColor\"><path d=\"M4 10.5h11.4l-4.7-4.7 2.1-2.1L21.1 12l-8.3 8.3-2.1-2.1 4.7-4.7H4z\"/></svg></a>",
+      "css": ":host{--ink:#14172B;--light:#F4F5F7;--coral:#F0553A;--white:#FFFFFF;--ink-soft:#3A3F5C;--light-soft:#C4C8D8;--rule-light:#D9DCE5;--ease:cubic-bezier(.16,1,.3,1);} .ds-btn{display:inline-flex;align-items:center;gap:.55em;background:var(--ink);color:var(--light);font:700 1.1rem/1 \"Outfit\", \"Avenir Next\", sans-serif;padding:18px 26px;text-decoration:none;border-radius:0;transition:background-color .2s,color .2s;} .ds-btn:hover{background:var(--ink-soft);} .ds-btn:focus-visible{outline:3px solid var(--coral);outline-offset:3px;}"
+    },
+    {
+      "name": "Coral Button",
+      "kind": "button",
+      "refersTo": "button-coral",
+      "description": "The single closing primary action, Coral on the Ink ground.",
+      "html": "<div class=\"ds-ink\"><a class=\"ds-btn-coral\" href=\"#\">Read the docs<svg viewBox=\"0 0 24 24\" width=\"14\" height=\"14\" aria-hidden=\"true\" style=\"fill:currentColor\"><path d=\"M6 4h14v14h-3V9.1L6.1 20 4 17.9 14.9 7H6z\"/></svg></a></div>",
+      "css": ":host{--ink:#14172B;--light:#F4F5F7;--coral:#F0553A;--white:#FFFFFF;--ink-soft:#3A3F5C;--light-soft:#C4C8D8;--rule-light:#D9DCE5;--ease:cubic-bezier(.16,1,.3,1);} .ds-ink{background:var(--ink);padding:32px;} .ds-btn-coral{display:inline-flex;align-items:center;gap:.55em;background:var(--coral);color:var(--ink);font:700 1.1rem/1 \"Outfit\", \"Avenir Next\", sans-serif;padding:18px 26px;text-decoration:none;border-radius:0;transition:background-color .2s,color .2s;} .ds-btn-coral:hover{background:var(--light);color:var(--ink);} .ds-btn-coral:focus-visible{outline:3px solid var(--coral);outline-offset:3px;}"
+    },
+    {
+      "name": "Action Link",
+      "kind": "custom",
+      "refersTo": "link-action",
+      "description": "Outfit 700 link with a 3px current-colour underline and an arrow that slides on hover.",
+      "html": "<a class=\"ds-go\" href=\"#\">Slack setup guide<svg viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" aria-hidden=\"true\" style=\"fill:currentColor\"><path d=\"M4 10.5h11.4l-4.7-4.7 2.1-2.1L21.1 12l-8.3 8.3-2.1-2.1 4.7-4.7H4z\"/></svg></a>",
+      "css": ":host{--ink:#14172B;--light:#F4F5F7;--coral:#F0553A;--white:#FFFFFF;--ink-soft:#3A3F5C;--light-soft:#C4C8D8;--rule-light:#D9DCE5;--ease:cubic-bezier(.16,1,.3,1);} .ds-go{display:inline-flex;align-items:center;gap:.45em;font:700 1.05rem/1 \"Outfit\", \"Avenir Next\", sans-serif;color:var(--ink);text-decoration:none;border-bottom:3px solid currentColor;padding:8px 0 6px;} .ds-go svg{transition:transform .35s var(--ease);} .ds-go:hover svg{transform:translateX(4px);} .ds-go:focus-visible{outline:3px solid var(--coral);outline-offset:3px;} .ds-go.is-active{border-bottom-color:var(--coral);}"
+    },
+    {
+      "name": "Header Crossbar",
+      "kind": "nav",
+      "refersTo": "header-bar",
+      "description": "The T's crossbar: an Ink bar holding the wordmark, with Outfit 500 links to its right.",
+      "html": "<header class=\"ds-top\"><a class=\"ds-bar\" href=\"#\">TutorWays</a><nav class=\"ds-nav\"><a href=\"#\">Surfaces</a><a href=\"#\">Benchmark</a><a href=\"#\">Ferret</a><a href=\"#\">Docs<svg viewBox=\"0 0 24 24\" width=\"14\" height=\"14\" aria-hidden=\"true\" style=\"fill:currentColor\"><path d=\"M6 4h14v14h-3V9.1L6.1 20 4 17.9 14.9 7H6z\"/></svg></a></nav></header>",
+      "css": ":host{--ink:#14172B;--light:#F4F5F7;--coral:#F0553A;--white:#FFFFFF;--ink-soft:#3A3F5C;--light-soft:#C4C8D8;--rule-light:#D9DCE5;--ease:cubic-bezier(.16,1,.3,1);} .ds-top{display:flex;align-items:stretch;gap:32px;background:var(--light);padding:24px 24px 0 0;} .ds-bar{display:flex;align-items:center;width:240px;height:72px;padding-left:32px;background:var(--ink);color:var(--light);font:800 1.4rem/1 \"Outfit\", \"Avenir Next\", sans-serif;letter-spacing:-.02em;text-decoration:none;} .ds-nav{display:flex;align-items:center;gap:28px;margin-left:auto;font:500 1.05rem/1 \"Outfit\", \"Avenir Next\", sans-serif;} .ds-nav a{display:inline-flex;align-items:center;gap:.3em;color:var(--ink);text-decoration:none;padding:10px 0;} .ds-nav a:hover{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:.2em;} .ds-nav a:focus-visible,.ds-bar:focus-visible{outline:3px solid var(--coral);outline-offset:3px;}"
+    },
+    {
+      "name": "Surface Picker Row",
+      "kind": "custom",
+      "refersTo": "surface-picker",
+      "description": "List row with a square logo tile, Outfit 700 name and an arrow; indents on hover.",
+      "html": "<ul class=\"ds-pick\"><li><a href=\"#\"><span class=\"ds-tile\"></span>Slack<svg viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" aria-hidden=\"true\" style=\"fill:currentColor\"><path d=\"M4 10.5h11.4l-4.7-4.7 2.1-2.1L21.1 12l-8.3 8.3-2.1-2.1 4.7-4.7H4z\"/></svg></a></li><li><a href=\"#\"><span class=\"ds-tile\"></span>Jupyter<small>guide coming</small><svg viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" aria-hidden=\"true\" style=\"fill:currentColor\"><path d=\"M4 10.5h11.4l-4.7-4.7 2.1-2.1L21.1 12l-8.3 8.3-2.1-2.1 4.7-4.7H4z\"/></svg></a></li></ul>",
+      "css": ":host{--ink:#14172B;--light:#F4F5F7;--coral:#F0553A;--white:#FFFFFF;--ink-soft:#3A3F5C;--light-soft:#C4C8D8;--rule-light:#D9DCE5;--ease:cubic-bezier(.16,1,.3,1);} .ds-pick{list-style:none;margin:0;padding:0;max-width:420px;border-top:6px solid var(--ink);} .ds-pick a{display:flex;align-items:center;gap:14px;padding:10px 0;border-bottom:1px solid var(--rule-light);font:700 1.2rem/1.1 \"Outfit\", \"Avenir Next\", sans-serif;color:var(--ink);text-decoration:none;transition:padding .35s var(--ease);} .ds-tile{width:32px;height:32px;background:var(--white);border:1px solid var(--rule-light);} .ds-pick small{font:400 .85rem/1 \"Atkinson Hyperlegible\", \"Segoe UI\", system-ui, sans-serif;color:var(--ink-soft);} .ds-pick svg{margin-left:auto;opacity:.4;transition:opacity .2s,transform .35s var(--ease);} .ds-pick a:hover{padding-left:8px;} .ds-pick a:hover svg{opacity:1;transform:translateX(4px);} .ds-pick a:focus-visible{outline:3px solid var(--coral);outline-offset:3px;}"
+    },
+    {
+      "name": "Station",
+      "kind": "custom",
+      "refersTo": "station",
+      "description": "A stop on the route: white square with a 4px route-colour border; Coral ring when active.",
+      "html": "<div class=\"ds-stations\"><span class=\"ds-station\"></span><span class=\"ds-station is-active\"></span></div>",
+      "css": ":host{--ink:#14172B;--light:#F4F5F7;--coral:#F0553A;--white:#FFFFFF;--ink-soft:#3A3F5C;--light-soft:#C4C8D8;--rule-light:#D9DCE5;--ease:cubic-bezier(.16,1,.3,1);} .ds-stations{display:flex;gap:40px;padding:24px;background:var(--light);} .ds-station{width:64px;height:64px;background:var(--white);border:4px solid var(--ink);transition:transform .5s var(--ease),border-color .3s,box-shadow .3s;} .ds-station:hover,.ds-station.is-active{border-color:var(--coral);transform:scale(1.14);box-shadow:0 0 0 6px var(--coral);}"
+    },
+    {
+      "name": "Product Panel",
+      "kind": "card",
+      "refersTo": "panel",
+      "description": "Square, 2px-framed mock of a surface showing a real tutor reply; the only shadowed element.",
+      "html": "<div class=\"ds-panel\"><div class=\"ds-win\">Discord</div><div class=\"ds-body\"><div class=\"ds-post\"><b>Student</b><p>How do I use <code>tbl.where</code>?</p></div><div class=\"ds-post ds-bot\"><b>Tutor</b><p>Use <code>where</code> to keep the rows that meet a condition.</p></div></div><p class=\"ds-label\">Captured reply from the Data 8 tutor.</p></div>",
+      "css": ":host{--ink:#14172B;--light:#F4F5F7;--coral:#F0553A;--white:#FFFFFF;--ink-soft:#3A3F5C;--light-soft:#C4C8D8;--rule-light:#D9DCE5;--ease:cubic-bezier(.16,1,.3,1);} .ds-panel{max-width:460px;background:var(--white);color:var(--ink);border:2px solid var(--ink);box-shadow:0 24px 48px -28px rgba(20,23,43,.45);font:400 1rem/1.5 \"Atkinson Hyperlegible\", \"Segoe UI\", system-ui, sans-serif;} .ds-win{padding:14px 18px;border-bottom:2px solid var(--ink);font:700 1rem/1 \"Outfit\", \"Avenir Next\", sans-serif;} .ds-body{display:grid;gap:18px;padding:22px;} .ds-post b{display:block;font:700 .95rem/1.2 \"Outfit\", \"Avenir Next\", sans-serif;margin-bottom:4px;} .ds-post p{margin:0;} .ds-bot{background:var(--light);padding:14px 16px;} .ds-post code{font-family:ui-monospace,Menlo,monospace;font-size:.88em;background:var(--light);padding:.1em .3em;} .ds-bot code{background:var(--white);} .ds-label{margin:0;padding:10px 18px 14px;font-size:.9rem;color:var(--ink-soft);}"
+    },
+    {
+      "name": "Route with Fillet",
+      "kind": "custom",
+      "refersTo": "route",
+      "description": "The stroke crossing from Light into Ink through quarter-circle fillets (fillet rule pending user confirmation).",
+      "html": "<div class=\"ds-route\"><div class=\"ds-g ds-gl\"><i class=\"ds-stem\"></i><i class=\"ds-seam ds-bottom\"></i></div><div class=\"ds-g ds-gi\"><i class=\"ds-stem\"></i><i class=\"ds-seam ds-topf\"></i></div></div>",
+      "css": ":host{--ink:#14172B;--light:#F4F5F7;--coral:#F0553A;--white:#FFFFFF;--ink-soft:#3A3F5C;--light-soft:#C4C8D8;--rule-light:#D9DCE5;--ease:cubic-bezier(.16,1,.3,1);} .ds-route{--stem:32px;--r:48px;--left:80px;} .ds-g{position:relative;height:140px;} .ds-gl{background:var(--light);--route:var(--ink);} .ds-gi{background:var(--ink);--route:var(--light);} .ds-stem{position:absolute;top:0;bottom:0;left:var(--left);width:var(--stem);background:var(--route);} .ds-seam{position:absolute;left:calc(var(--left) - var(--r));width:calc(var(--stem) + var(--r) * 2);height:var(--r);} .ds-bottom{bottom:0;} .ds-topf{top:0;} .ds-seam::before,.ds-seam::after{content:'';position:absolute;top:0;width:var(--r);height:var(--r);} .ds-seam::before{left:0;} .ds-seam::after{right:0;} .ds-bottom::before{background:radial-gradient(circle var(--r) at 0 0,transparent calc(100% - .5px),var(--route) 100%);} .ds-bottom::after{background:radial-gradient(circle var(--r) at 100% 0,transparent calc(100% - .5px),var(--route) 100%);} .ds-topf::before{background:radial-gradient(circle var(--r) at 0 100%,transparent calc(100% - .5px),var(--route) 100%);} .ds-topf::after{background:radial-gradient(circle var(--r) at 100% 100%,transparent calc(100% - .5px),var(--route) 100%);}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Route",
+    "overview": "The TutorWays mark is a T whose stem drops and bends into a W. The system treats that stem as a route: one thick stroke, square at its ends, runs down the left of the page from the header to the footer, and every section hangs off it. The header's ink bar is the T's crossbar, centred on the stroke. Each surface the tutor reaches is a stop on the line. Where the page changes ground, the stroke widens into the next ground through quarter-circle fillets, and at the foot of the page the route closes as the TW mark itself.\n\nThe world is built from the brand's three avatar grounds (Light, Ink, Coral) used as full-bleed bands in sequence, Outfit ExtraBold display (the wordmark's own face) over Atkinson Hyperlegible text, and hard rectangular geometry everywhere except the curves that belong to the mark. It is plain and confident: big tight headlines, generous vertical rhythm, thin rules between list rows, no ornament that is not the route. Density is low in the narrative and moderate inside the mock product panels, which carry real tutor replies.\n\nMotion follows the stroke. The route draws on with scroll where the browser supports scroll-driven animation, steps activate one at a time as they cross a line near mid-viewport, and every effect has a static, fully drawn fallback.",
+    "keyCharacteristics": [
+      "One stroke, square terminals, weight one sixth of the mark's width, always in the colour that contrasts with its ground.",
+      "Three grounds in sequence: Light, Ink, Coral; never a gradient between them.",
+      "Every content column aligns to a single left edge set by the stroke.",
+      "No rounded corners on any box; the only curves are the mark's semicircles and the fillets.",
+      "Coral is scarce: the Ferret ground, the one final primary action, the active stop, the focus ring."
+    ],
+    "rules": [
+      {
+        "name": "The Contrast Stroke Rule",
+        "body": "The stroke always takes the colour that contrasts with its ground: Ink on Light and Coral, Light on Ink. Each ground sets `--route`, `--soft` and `--rule` together; components read those, never a fixed colour.",
+        "section": "colors"
+      },
+      {
+        "name": "The Scarce Coral Rule",
+        "body": "Inside Light and Ink sections Coral marks only the active stop and focus. It becomes a ground once (Ferret) and a button once (the closing primary action). Coral is never used for text on Light or Ink.",
+        "section": "colors"
+      },
+      {
+        "name": "The Wordmark Voice Rule",
+        "body": "Every heading is Outfit 800 with negative tracking (about -0.02em) and balanced wrapping. Outfit at 500 and 700 is reserved for navigation and actions; it never sets paragraphs.",
+        "section": "typography"
+      },
+      {
+        "name": "The Sentence Case Rule",
+        "body": "Labels are short, bold, sentence case and sit inside the content they describe. No uppercase tracking, no labels floating above headlines.",
+        "section": "typography"
+      },
+      {
+        "name": "The One Edge Rule",
+        "body": "All section content aligns to the column set by the stroke. Nothing starts at the gutter except the header's nav and the footer's right-hand links.",
+        "section": "layout"
+      },
+      {
+        "name": "The Flat Route Rule",
+        "body": "The stroke, the grounds, the header bar, buttons and stations are never shadowed. Lift is for the mock product panels only.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Mark's Curves Rule",
+        "body": "A curve is allowed only if it is one of the mark's own: its semicircles, or the quarter-circle fillet where the stroke meets a ground (pending confirmation). No border-radius on boxes, no pill buttons, no rounded cards.",
+        "section": "shapes"
+      },
+      {
+        "name": "The Square Terminal Rule",
+        "body": "The stroke ends square, as the mark's strokes do. It is never capped round.",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "Do run one square-ended stroke (stem, clamp 14 to 56px) down the page at the same left offset in every section, coloured by the ground (Ink on Light and Coral, Light on Ink).",
+      "Do align every section's content to the column set by the stroke.",
+      "Do set grounds as full-bleed bands of Light, Ink or Coral, each setting its own route, soft and rule colours.",
+      "Do set every heading in Outfit 800 with about -0.02em tracking; set running text in Atkinson Hyperlegible at 1.125rem / 1.55.",
+      "Do keep every box square (0px) and use heavy structural borders (2px frames, 3px action underlines, 4px stations).",
+      "Do use Coral for the active stop, the focus ring, the Ferret ground and the single closing primary action.",
+      "Do ship a static, fully drawn fallback for every scroll effect, and honour reduced motion.",
+      "Do use the route ease (`cubic-bezier(.16, 1, .3, 1)`) for state movement."
+    ],
+    "donts": [
+      "Don't round any box corner or use pill shapes; curves come only from the mark (its semicircles and the stroke's fillets).",
+      "Don't cap the stroke round or draw it thin; it carries the mark's weight.",
+      "Don't set Coral text on Light or Ink, or use Coral as decoration inside Light and Ink sections.",
+      "Don't shadow the stroke, grounds, header bar, buttons or stations; drop shadows belong to mock product panels.",
+      "Don't blend grounds with gradients; ground changes are hard edges met by the stroke's fillets.",
+      "Don't add uppercase tracked labels above headlines."
+    ],
+    "pending": "Fillet rule awaits user confirmation: the direction contract originally specified U-bends; the build ships quarter-circle fillets."
+  }
+}
