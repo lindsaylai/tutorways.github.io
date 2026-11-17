@@ -308,70 +308,185 @@ greater than a certain value, you would write:
       </ol>
     </section>
 
-    <!-- Benchmark -->
-    <section class="bench ground-light" id="benchmark" aria-labelledby="bench-title">
+    <!-- Compare: the same question, answered on three surfaces -->
+    <section class="compare ground-light" id="compare" aria-labelledby="compare-title" data-compare>
       <div class="route draw" aria-hidden="true"></div>
-      <div class="bench-copy">
-        <h2 id="bench-title">The surface is the experiment.</h2>
-        <p>Every surface above answers from the same course material. TutorWays keeps the tutor fixed, changes one thing, and measures what moves. We compare proprietary and open-weight models, small models, and complete tutor systems the same way.</p>
-        <dl class="bench-list">
-          <div><dt>We measure</dt><dd>Teaching quality, cost per response, latency, and how reliably it runs where students are.</dd></div>
-          <div><dt>We measure with</dt><dd>Human ratings, LLM judges against a written rubric, pairwise comparisons, and scripted checks.</dd></div>
-          <div><dt>Results will include</dt><dd>The methodology, the harness configuration, the test questions, and the measured data.</dd></div>
-        </dl>
-        <p class="status-line">No results are published yet. They'll appear once the evaluation design and judges are calibrated.</p>
-        <div class="actions">
-          <a class="btn" href="https://tutorways.github.io/Documentation/benchmark/">How the benchmark works<svg class="i" aria-hidden="true"><use href="#arrow"/></svg></a>
-          <a class="link" href="https://tutorways.github.io/Documentation/benchmark/evaluation/">How evaluation is scored</a>
+      <h2 id="compare-title">The same question gets a different answer on each surface.</h2>
+      <p class="sec-lede">Here are three replies the Data&nbsp;8 tutor gave to one question on three surfaces. Pick something to look for and see which replies do it.</p>
+
+      <p class="sq-q"><span>Student asks</span>How can I filter a table?</p>
+
+      <div class="traits">
+        <p>Look for</p>
+        <div class="chip-row" role="group" aria-label="Highlight a trait in the replies">
+          <button class="chip" type="button" data-t="code" aria-pressed="false"><i aria-hidden="true"></i>Shows code</button>
+          <button class="chip" type="button" data-t="steps" aria-pressed="false"><i aria-hidden="true"></i>Gives steps</button>
+          <button class="chip" type="button" data-t="ask" aria-pressed="false"><i aria-hidden="true"></i>Asks a follow-up</button>
+          <button class="chip" type="button" data-t="cite" aria-pressed="false"><i aria-hidden="true"></i>Points to course material</button>
         </div>
       </div>
 
-      <figure class="mark-diagram">
-        <svg viewBox="14 10 92 90" role="img" aria-labelledby="mark-desc">
-          <desc id="mark-desc">The TutorWays mark: a T whose stem drops toward a W. The T is the tutor, held fixed. The two halves of the W are the model and the surface, which vary. The gap between them is what gets measured.</desc>
-          <path class="m" d="M18 18H102V32H67V60H53V32H18Z M18 56H32V78A10.5 10.5 0 0 0 53 78V70H67V78A10.5 10.5 0 0 0 88 78V56H102V78A24.5 24.5 0 0 1 60 95.146A24.5 24.5 0 0 1 18 78Z"/>
-          <path class="measure" d="M69.5 60H73.5M71.5 60V70M69.5 70H73.5"/>
-          <path class="lead" d="M73.5 65H76V44H80"/>
-        </svg>
-        <figcaption>
-          <span class="tag tag-t"><b>The tutor</b>course material and instructions, held fixed</span>
-          <span class="tag tag-l"><b>The model</b>varied</span>
-          <span class="tag tag-r"><b>The surface</b>varied</span>
-          <span class="tag tag-gap"><b>The gap</b>what we measure</span>
-        </figcaption>
-      </figure>
+      <div class="replies">
+        <article class="panel" data-has="steps" aria-label="Slack reply">
+          <div class="win-bar"><img src="/assets/img/surfaces/slack.png" alt="" width="24" height="24">Slack · #data8-help</div>
+          <div class="body">
+            <div class="post bot"><b>Data8 Tutor</b><p>To filter rows from a table, you'll typically use the <code>where</code> method. Here's a general process to follow:</p>
+              <mark data-t="steps"><ol><li>Identify the table you want to filter.</li><li>Choose the column you want to filter by.</li><li>Define the condition for filtering.</li><li>Use the <code>where</code> method to apply the filter.</li></ol></mark></div>
+          </div>
+          <p class="tags"><span>Gives steps</span><span class="no">Shows code</span><span class="no">Asks a follow-up</span><span class="no">Points to material</span></p>
+        </article>
+
+        <article class="panel" data-has="code" aria-label="Discord reply">
+          <div class="win-bar"><img src="/assets/img/surfaces/discord.png" alt="" width="24" height="24">Discord · #ask-the-tutor</div>
+          <div class="body">
+            <div class="post bot"><b>Data 8 Tutor</b><p>To filter a table, you can use the <code>where</code> method, which allows you to specify a condition that the rows must meet.</p>
+              <mark data-t="code"><pre><code>filtered_table = my_table.where("column_name", are.above(value))</code></pre></mark></div>
+          </div>
+          <p class="tags"><span>Shows code</span><span class="no">Gives steps</span><span class="no">Asks a follow-up</span><span class="no">Points to material</span></p>
+        </article>
+
+        <article class="panel" data-has="code ask cite" aria-label="Grok Bot reply">
+          <div class="win-bar"><img src="/assets/img/surfaces/grok.jpg" alt="" width="24" height="24">Grok Bot · Data 8 Tutor</div>
+          <div class="body">
+            <div class="post bot"><b>Data 8 Tutor</b><p>You filter a table with <mark data-t="code"><code>tbl.where(column, condition)</code></mark>. It keeps only the rows where that column meets the condition, like <mark data-t="code"><code>are.above(10)</code></mark> or <mark data-t="code"><code>are.equal_to('PG')</code></mark>. If you leave out <code>are</code> and just pass a value, it matches that value exactly.</p>
+              <p><mark data-t="ask">What are you trying to filter? Tell me the table, the column, and what you want to keep, and I'll point you to the next step.</mark> <mark data-t="cite">Textbook 6.2 (Selecting Rows)</mark> lists every <code>are</code> option.</p></div>
+          </div>
+          <p class="tags"><span>Shows code</span><span>Asks a follow-up</span><span>Points to material</span><span class="no">Gives steps</span></p>
+        </article>
+      </div>
+      <p class="sec-note">Captured from the Slack, Discord and Grok Bot tutors. The Slack student phrased it "How to filter from table?". The tags describe these three replies only; they are not benchmark results.</p>
+    </section>
+
+    <!-- Benchmark -->
+    <section class="bench ground-light" id="benchmark" aria-labelledby="bench-title" data-bench>
+      <div class="route draw" aria-hidden="true"></div>
+      <h2 id="bench-title">The surface is the experiment.</h2>
+      <p class="sec-lede">Every surface above answers from the same course material. TutorWays keeps the tutor fixed, changes one thing, and measures what moves. We compare proprietary and open-weight models, small models, and complete tutor systems the same way.</p>
+
+      <div class="vary">
+        <span id="vary-label">What changes in a run?</span>
+        <div class="chip-row" role="group" aria-labelledby="vary-label">
+          <button class="chip" type="button" data-v="surface" aria-pressed="true">The surface</button>
+          <button class="chip" type="button" data-v="model" aria-pressed="false">The model</button>
+        </div>
+      </div>
+
+      <div class="flow">
+        <div class="packet" aria-hidden="true"></div>
+        <div class="fbox">
+          <p class="k">1 · In</p>
+          <h3>Test questions</h3>
+          <p>Questions a Data&nbsp;8 student would ask.</p>
+        </div>
+        <div class="fbox">
+          <p class="k">2 · Held fixed</p>
+          <h3>The tutor</h3>
+          <p>Course material and instructions.</p>
+        </div>
+        <div class="fpair">
+          <div class="fbox slot" data-slot="model">
+            <p class="k"><span class="state">3 · Held fixed</span></p>
+            <h3>The model</h3>
+            <p class="opts"><span>Proprietary</span><span>Open-weight</span><span>Small</span><span>Full tutor system</span></p>
+          </div>
+          <div class="fbox slot" data-slot="surface">
+            <p class="k"><span class="state">3 · Varied</span></p>
+            <h3>The surface</h3>
+            <p class="opts"><img src="/assets/img/surfaces/cli.png" alt="Local CLI" width="30" height="30"><img src="/assets/img/surfaces/slack.png" alt="Slack" width="30" height="30"><img src="/assets/img/surfaces/discord.png" alt="Discord" width="30" height="30"><img src="/assets/img/surfaces/jupyter.svg" alt="Jupyter" width="30" height="30"><img src="/assets/img/surfaces/grok.jpg" alt="Grok Bot" width="30" height="30"><img src="/assets/img/surfaces/muse.png" alt="Muse" width="30" height="30"><img src="/assets/img/surfaces/dots-chatgpt.svg" alt="Dots" width="30" height="30"><img src="/assets/img/surfaces/claude-duet.svg" alt="Claude Duet" width="30" height="30"></p>
+          </div>
+        </div>
+        <div class="fbox">
+          <p class="k">4 · Judged by</p>
+          <ul><li>Human ratings</li><li>LLM judges with a written rubric</li><li>Pairwise comparisons</li><li>Scripted checks</li></ul>
+        </div>
+        <div class="fbox">
+          <p class="k">5 · Out</p>
+          <ul><li>Teaching quality</li><li>Cost per response</li><li>Latency</li><li>How reliably it runs where students are</li></ul>
+        </div>
+      </div>
+
+      <p class="status-line">No results are published yet. They'll appear once the evaluation design and judges are calibrated, with the methodology, harness configuration, test questions and measured data.</p>
+      <div class="actions">
+        <a class="btn" href="https://tutorways.github.io/Documentation/benchmark/">How the benchmark works<svg class="i" aria-hidden="true"><use href="#arrow"/></svg></a>
+        <a class="link" href="https://tutorways.github.io/Documentation/benchmark/evaluation/">How evaluation is scored</a>
+      </div>
     </section>
 
     <!-- Ferret -->
-    <section class="ferret ground-coral" id="ferret" aria-labelledby="ferret-title">
+    <section class="ferret ground-coral" id="ferret" aria-labelledby="ferret-title" data-ferret>
       <div class="route" aria-hidden="true"></div>
       <div class="ferret-copy">
         <h2 id="ferret-title">Ferret grades understanding, not just answers.</h2>
         <p>Ferret is a framework for building mastery-based assignments. An AI grader questions students about their work until they've shown what they know.</p>
         <a class="btn" href="https://github.com/tutorways/ferret-grader">Ferret on GitHub<svg class="i" aria-hidden="true"><use href="#out"/></svg></a>
       </div>
-      <figure class="exchange">
-        <div class="ex-sub">
-          <b>Submitted</b>
-          <pre><code>def mean(xs):
-    return sum(xs) / len(xs)</code></pre>
-        </div>
-        <ol class="ex-turns">
-          <li class="f"><b>Ferret</b><p>This works on the tests. What happens if <code>xs</code> is empty?</p></li>
-          <li class="s"><b>Student</b><p>It divides by zero, so it crashes.</p></li>
-          <li class="f"><b>Ferret</b><p>Right. What should <code>mean</code> return for an empty list, and why?</p></li>
-          <li class="s"><b>Student</b><p>There's no mean, so I'd raise a clear error instead of a crash.</p></li>
-          <li class="f done"><b>Ferret</b><p>Edge cases: shown. Next concept.</p></li>
+
+      <div class="f-grid">
+        <ol class="f-steps">
+          <li class="f-step" data-upto="0" data-s="none"><b>1</b><h3>The code passes the tests.</h3><p>Passing tests don't show whether the student understands the code. Ferret starts there.</p></li>
+          <li class="f-step" data-upto="1" data-s="probing"><b>2</b><h3>Ferret asks about a case the tests missed.</h3><p>It picks an input the code doesn't handle and asks the student what happens.</p></li>
+          <li class="f-step" data-upto="2" data-s="probing"><b>3</b><h3>The student explains.</h3><p>They don't rewrite anything yet. They say what goes wrong and why.</p></li>
+          <li class="f-step" data-upto="4" data-s="probing"><b>4</b><h3>Ferret asks what should happen instead.</h3><p>The student knows the code crashes. Now they have to decide what the right behavior is.</p></li>
+          <li class="f-step" data-upto="5" data-s="shown"><b>5</b><h3>Ferret marks the concept and moves on.</h3><p>Once the student has explained the edge case, it counts as shown.</p></li>
         </ol>
-        <figcaption>Illustrative exchange, not a real transcript.</figcaption>
-      </figure>
+
+        <div class="f-stage">
+          <figure class="exchange">
+            <p class="meter" data-s="none"><span class="dot" aria-hidden="true"></span>Edge cases<em class="state">not shown yet</em></p>
+            <div class="ex-sub"><b>Submitted</b><pre><code>def mean(xs):
+    return sum(xs) / len(xs)</code></pre></div>
+            <ol class="ex-turns">
+              <li class="f"><b>Ferret</b><p>This works on the tests. What happens if <code>xs</code> is empty?</p></li>
+              <li class="s"><b>Student</b><p>It divides by zero, so it crashes.</p></li>
+              <li class="f"><b>Ferret</b><p>Right. What should <code>mean</code> return for an empty list, and why?</p></li>
+              <li class="s"><b>Student</b><p>There's no mean, so I'd raise a clear error instead of a crash.</p></li>
+              <li class="f done"><b>Ferret</b><p>Edge cases: shown. Next concept.</p></li>
+            </ol>
+            <figcaption>Illustrative exchange, not a real transcript.</figcaption>
+          </figure>
+        </div>
+      </div>
     </section>
 
-    <!-- Close -->
-    <section class="close ground-ink" aria-labelledby="close-title">
+    <!-- Close: pick a surface -->
+    <section class="close ground-ink" aria-labelledby="close-title" data-chooser>
       <div class="route" aria-hidden="true"></div>
       <h2 id="close-title">Pick a surface. Set it up this week.</h2>
-      <p>The guides cover setup, cost and what students will see on each surface, with Jupyter, Dots and Claude Duet on the way. The docs also cover model options and the architecture tradeoffs behind each choice.</p>
+      <p>Answer three questions about your class and the list re-ranks, with the reasons.</p>
+
+      <div class="ch-grid">
+        <div class="qs">
+          <div><h3 id="q-where">Where does your class already talk?</h3>
+            <div class="chip-row" data-q="where" role="group" aria-labelledby="q-where">
+              <button class="chip" type="button" data-a="slack" aria-pressed="false">Slack</button>
+              <button class="chip" type="button" data-a="discord" aria-pressed="false">Discord</button>
+              <button class="chip" type="button" data-a="notebooks" aria-pressed="false">In notebooks</button>
+              <button class="chip" type="button" data-a="none" aria-pressed="true">Nowhere yet</button>
+            </div></div>
+          <div><h3 id="q-always">Should it keep answering when your laptop is closed?</h3>
+            <div class="chip-row" data-q="always" role="group" aria-labelledby="q-always">
+              <button class="chip" type="button" data-a="yes" aria-pressed="false">Yes</button>
+              <button class="chip" type="button" data-a="no" aria-pressed="true">Doesn't matter</button>
+            </div></div>
+          <div><h3 id="q-pay">Can you pay for an AI plan?</h3>
+            <div class="chip-row" data-q="pay" role="group" aria-labelledby="q-pay">
+              <button class="chip" type="button" data-a="yes" aria-pressed="true">Yes</button>
+              <button class="chip" type="button" data-a="no" aria-pressed="false">It needs to be free</button>
+            </div></div>
+          <p class="sec-note">The ranking uses only what the docs say about each surface. Read the guide before you decide.</p>
+        </div>
+        <ol class="ch-list" aria-live="polite" aria-label="Surfaces, best fit first">
+          <li class="ch-row" data-id="cli"><img src="/assets/img/surfaces/cli.png" alt="" width="48" height="48"><div><h4>Local CLI</h4></div><a href="https://tutorways.github.io/Documentation/tutor-options/interfaces/local-cli/">Guide</a></li>
+          <li class="ch-row" data-id="slack"><img src="/assets/img/surfaces/slack.png" alt="" width="48" height="48"><div><h4>Slack</h4></div><a href="https://tutorways.github.io/Documentation/tutor-options/interfaces/slack/">Guide</a></li>
+          <li class="ch-row" data-id="discord"><img src="/assets/img/surfaces/discord.png" alt="" width="48" height="48"><div><h4>Discord</h4></div><a href="https://tutorways.github.io/Documentation/tutor-options/interfaces/discord/">Guide</a></li>
+          <li class="ch-row" data-id="jupyter"><img src="/assets/img/surfaces/jupyter.svg" alt="" width="48" height="48"><div><h4>Jupyter</h4></div><a href="https://tutorways.github.io/Documentation/tutor-options/">Docs</a></li>
+          <li class="ch-row" data-id="grok"><img src="/assets/img/surfaces/grok.jpg" alt="" width="48" height="48"><div><h4>Grok Bot</h4></div><a href="https://tutorways.github.io/Documentation/persistent-ais/grok-bot/">Guide</a></li>
+          <li class="ch-row" data-id="muse"><img src="/assets/img/surfaces/muse.png" alt="" width="48" height="48"><div><h4>Muse</h4></div><a href="https://tutorways.github.io/Documentation/persistent-ais/muse/">Guide</a></li>
+          <li class="ch-row" data-id="dots"><img src="/assets/img/surfaces/dots-chatgpt.svg" alt="" width="48" height="48"><div><h4>Dots</h4></div><a href="https://tutorways.github.io/Documentation/persistent-ais/">Docs</a></li>
+          <li class="ch-row" data-id="duet"><img src="/assets/img/surfaces/claude-duet.svg" alt="" width="48" height="48"><div><h4>Claude Duet</h4></div><a href="https://tutorways.github.io/Documentation/persistent-ais/">Docs</a></li>
+        </ol>
+      </div>
+
       <div class="actions">
         <a class="btn btn-coral" href="https://tutorways.github.io/Documentation/">Read the docs<svg class="i" aria-hidden="true"><use href="#out"/></svg></a>
         <a class="link" href="#surfaces">Back to the surfaces</a>

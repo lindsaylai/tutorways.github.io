@@ -100,7 +100,7 @@ a { color: inherit; text-decoration-thickness: 2px; text-underline-offset: .2em;
 .top nav a:hover { text-decoration: underline; }
 
 /* ---------- Route: the stem, and where it meets a ground ---------- */
-.bench, .ferret, .close { position: relative; }
+.compare, .bench, .ferret, .close { position: relative; }
 .route {
   position: absolute;
   top: 0;
@@ -132,7 +132,7 @@ a { color: inherit; text-decoration-thickness: 2px; text-underline-offset: .2em;
 /* Draw-on: the stroke's tip follows a line 70% down the viewport. Fully drawn by default. */
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {
-    .bench { view-timeline: --section block; }
+    .compare, .bench { view-timeline: --section block; }
     .route.draw {
       animation: draw linear both;
       animation-timeline: --section;
@@ -148,8 +148,8 @@ a { color: inherit; text-decoration-thickness: 2px; text-underline-offset: .2em;
 /* Objects settle into place as they enter: a small tilt back to flat. Static by default. */
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {
-    .bench, .ferret { perspective: 1400px; }
-    .mark-diagram, .exchange {
+    .bench { perspective: 1400px; }
+    .flow {
       animation: settle linear both;
       animation-timeline: view();
       animation-range: entry 0% cover 40%;
@@ -417,22 +417,22 @@ a { color: inherit; text-decoration-thickness: 2px; text-underline-offset: .2em;
 .approve-row span { padding: 10px 16px; border: 2px solid var(--ink); }
 .approve-row .yes { background: var(--ink); color: var(--light); }
 
-/* ---------- Benchmark ---------- */
-.bench {
-  display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-  gap: clamp(40px, 6vw, 120px);
-  align-items: center;
-  padding: clamp(96px, 11vw, 176px) var(--gutter) clamp(96px, 11vw, 176px) var(--col);
+/* ---------- Shared section parts ---------- */
+.compare, .bench, .ferret { padding: clamp(96px, 11vw, 176px) var(--gutter) clamp(96px, 11vw, 176px) var(--col); }
+.compare h2, .bench h2, .ferret h2 { font-size: clamp(2.4rem, 5vw, 4.5rem); line-height: 1; }
+.sec-lede { margin-top: 24px; max-width: 60ch; color: var(--soft); }
+.sec-note { margin-top: 18px; max-width: 70ch; font-size: .9rem; color: var(--soft); }
+.chip-row { display: flex; flex-wrap: wrap; gap: 10px; }
+.chip {
+  font: 700 .95rem/1 var(--display); padding: 12px 16px; cursor: pointer;
+  background: var(--white); color: var(--ink); border: 2px solid var(--ink);
+  transition: background-color .2s, color .2s, transform .3s var(--ease);
 }
-.bench h2 { font-size: clamp(2.4rem, 5vw, 4.5rem); line-height: 1; max-width: 12ch; }
-.bench-copy > p { margin-top: 24px; max-width: 58ch; color: var(--soft); }
-.bench-list { margin: 32px 0 0; display: grid; }
-.bench-list div { display: grid; grid-template-columns: 11rem 1fr; gap: 16px; padding: 16px 0; border-top: 1px solid var(--rule); }
-.bench-list div:last-child { border-bottom: 1px solid var(--rule); }
-.bench-list dt { font: 700 1.05rem/1.4 var(--display); }
-.bench-list dd { margin: 0; }
-.status-line { margin-top: 24px; font-weight: 700; }
+.chip:hover { transform: translateY(-2px); }
+.chip[aria-pressed="true"] { background: var(--ink); color: var(--light); }
+.ground-ink .chip { background: transparent; color: var(--light); border-color: var(--light); }
+.ground-ink .chip[aria-pressed="true"] { background: var(--light); color: var(--ink); }
+.status-line { margin-top: 32px; font-weight: 700; max-width: 70ch; }
 .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 28px; margin-top: 32px; }
 .btn {
   display: inline-flex; align-items: center; gap: .55em;
@@ -448,31 +448,112 @@ a { color: inherit; text-decoration-thickness: 2px; text-underline-offset: .2em;
 .btn-coral:hover { background: var(--light); color: var(--ink); }
 .link { font-weight: 700; }
 
-.mark-diagram { position: relative; margin: 0; }
-.mark-diagram svg { width: 100%; height: auto; overflow: visible; }
-.mark-diagram .m { fill: var(--ink); }
-.mark-diagram .measure { fill: none; stroke: var(--ink); stroke-width: .8; stroke-linecap: square; }
-.mark-diagram .lead { fill: none; stroke: var(--ink-soft); stroke-width: .6; stroke-dasharray: 1.4 1.4; }
-.mark-diagram figcaption { position: absolute; inset: 0; pointer-events: none; }
-.tag { position: absolute; display: grid; gap: 2px; font-size: .95rem; line-height: 1.35; max-width: 15ch; color: var(--ink-soft); }
-.tag b { font: 700 1.05rem/1.2 var(--display); color: var(--ink); }
-/* positions as fractions of the viewBox (x 14..106, y 10..100) */
-.tag-t   { left: 4%;  top: -12%; max-width: 32ch; }
-.tag-gap { left: 73%; top: 32%; width: 9rem; }
-.tag-l   { left: 23%; top: 72%; max-width: 8ch; }
-.tag-r   { left: 61%; top: 72%; max-width: 8ch; }
+/* ---------- Compare: one question, three captured replies ---------- */
+.compare h2 { max-width: 17ch; }
+.sq-q { display: inline-flex; align-items: center; gap: 12px; margin-top: 32px; padding: 14px 20px; background: var(--ink); color: var(--light); font: 700 1.15rem/1.2 var(--display); box-shadow: var(--lift); }
+.sq-q span { font: 400 .85rem/1 var(--body); color: var(--light-soft); }
+.traits { margin-top: 32px; }
+.traits > p { font: 700 .9rem/1.2 var(--body); color: var(--soft); margin-bottom: 10px; }
+.replies { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(16px, 2vw, 32px); margin-top: 32px; align-items: start; }
+.replies .panel { margin: 0; transition: opacity .4s var(--ease), transform .5s var(--ease); }
+.replies .panel.dim { opacity: .35; transform: scale(.98); }
+.replies .panel.hit { transform: translateY(-6px); }
+.compare mark { background: none; color: inherit; transition: background-color .3s, box-shadow .3s; }
+.compare mark.on { background: color-mix(in srgb, var(--coral) 24%, transparent); box-shadow: inset 0 -3px 0 var(--coral); }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 18px 14px; margin: 0; }
+.tags span { font: 700 .78rem/1 var(--display); padding: 6px 8px; border: 1.5px solid var(--ink); }
+.tags span.no { border: 1.5px dashed var(--rule-light); color: var(--ink-soft); text-decoration: line-through; }
 
-/* ---------- Ferret ---------- */
-.ferret {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
-  gap: clamp(40px, 6vw, 112px);
-  align-items: center;
-  padding: clamp(96px, 11vw, 176px) var(--gutter) clamp(96px, 11vw, 176px) var(--col);
-}
-.ferret h2 { font-size: clamp(2.4rem, 5vw, 4.5rem); line-height: 1; max-width: 13ch; }
+/* ---------- Benchmark: change one thing, measure what moves ---------- */
+.bench h2 { max-width: 12ch; }
+.vary { margin-top: 40px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.vary > span { font: 700 1.05rem/1 var(--display); }
+.flow { position: relative; display: grid; grid-template-columns: 1fr 1fr 1.25fr 1.15fr 1.15fr; gap: clamp(16px, 2vw, 32px); margin-top: 48px; align-items: center; }
+/* the route runs through every stage, and a packet travels it */
+.flow::before { content: ""; position: absolute; left: 4%; right: 4%; top: 50%; height: 14px; margin-top: -7px; background: var(--route); }
+.packet { position: absolute; top: 50%; left: 4%; width: 26px; height: 26px; margin: -13px 0 0 -13px; background: var(--coral); z-index: 1; animation: travel 6s cubic-bezier(.65, 0, .35, 1) infinite; }
+@keyframes travel { from { left: 4%; } to { left: 96%; } }
+.fbox { position: relative; z-index: 2; background: var(--white); border: 2px solid var(--ink); padding: 18px; box-shadow: var(--lift); }
+.fbox h3 { font-size: 1.2rem; line-height: 1.15; }
+.fbox .k { font: 700 .8rem/1 var(--body); color: var(--ink-soft); margin-bottom: 8px; }
+.fbox > p:not(.k), .fbox li { font-size: .95rem; line-height: 1.45; }
+.fbox ul { margin: 8px 0 0; padding-left: 1.1em; }
+.fpair { display: grid; gap: 14px; position: relative; z-index: 2; }
+.slot { transition: background-color .4s, color .4s, border-color .4s, transform .5s var(--ease); }
+.slot.held { background: var(--light); border-style: dashed; }
+.slot.held .opts { opacity: .35; }
+.slot.varied { background: var(--ink); color: var(--light); transform: scale(1.04); }
+.slot.varied .k { color: var(--coral); }
+.opts { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; transition: opacity .4s; }
+.opts img { width: 30px; height: 30px; object-fit: contain; background: var(--white); border: 2px solid transparent; padding: 3px; transition: border-color .3s, transform .3s var(--ease); }
+.opts img.now { border-color: var(--coral); transform: scale(1.15); }
+.opts span { font: 700 .8rem/1 var(--display); padding: 6px 8px; border: 1.5px solid currentColor; transition: background-color .3s, color .3s; }
+.opts span.now { background: var(--coral); color: var(--ink); border-color: var(--coral); }
+
+/* ---------- Ferret: the exchange plays out step by step ---------- */
+.ferret h2 { max-width: 13ch; }
 .ferret-copy p { margin-top: 24px; max-width: 46ch; font-size: clamp(1.125rem, 1.4vw, 1.3rem); }
 .ferret-copy .btn { margin-top: 32px; }
+.f-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 32px; margin-top: 56px; }
+.f-steps { list-style: none; margin: 0; padding: 0; }
+.f-step { padding: 16px 0; border-top: 1px solid var(--rule); }
+.f-step b { font: 800 .9rem/1 var(--display); }
+.f-step h3 { font-size: clamp(1.4rem, 2.4vw, 2.1rem); line-height: 1.08; margin-top: 8px; }
+.f-step p { margin-top: 10px; max-width: 42ch; }
+.f-stage { order: -1; }
+.meter { display: flex; align-items: center; gap: 12px; margin: 0; padding: 14px 24px; background: var(--white); border-bottom: 2px solid var(--ink); font: 700 .95rem/1 var(--display); }
+.meter .dot { width: 14px; height: 14px; border: 2px solid var(--ink); transition: background-color .4s; }
+.meter[data-s="probing"] .dot { background: var(--coral); }
+.meter[data-s="shown"] .dot { background: var(--ink); }
+.meter em { font-style: normal; font-weight: 400; color: var(--ink-soft); margin-left: auto; }
+.ex-turns li { transition: opacity .45s var(--ease), transform .55s var(--ease); }
+@media (min-width: 960px) and (min-height: 620px) {
+  .f-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: clamp(40px, 6vw, 112px); }
+  .f-step { min-height: 62svh; display: flex; flex-direction: column; justify-content: center; border: 0; opacity: .35; transition: opacity .4s var(--ease); }
+  .f-step.is-active { opacity: 1; }
+  .f-stage { order: 0; position: sticky; top: 12svh; align-self: start; margin-top: 16svh; }
+  .js .ex-turns li.later { opacity: 0; transform: translateY(14px); }
+}
+
+/* ---------- Close: which surface fits your class ---------- */
+.ch-grid { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(40px, 6vw, 112px); margin-top: 40px; align-items: start; }
+.qs { display: grid; gap: 32px; }
+.qs h3 { font-size: 1.25rem; line-height: 1.2; margin-bottom: 12px; }
+.ch-list { list-style: none; margin: 0; padding: 0; }
+.ch-row { display: grid; grid-template-columns: 48px 1fr auto; gap: 16px; align-items: center; padding: 14px 0; border-top: 1px solid var(--rule-ink); transition: transform .6s var(--ease), opacity .4s; }
+.ch-row img { width: 48px; height: 48px; object-fit: contain; background: var(--white); padding: 6px; }
+.ch-row h4 { font: 800 1.2rem/1.1 var(--display); margin: 0; }
+.why { display: flex; flex-direction: column; gap: 2px; margin-top: 6px; }
+.why span { font-size: .85rem; line-height: 1.3; color: var(--light-soft); }
+.why .plus::before { content: "+ "; font-weight: 700; color: var(--light); }
+.why .minus::before { content: "− "; font-weight: 700; color: var(--coral); }
+.ch-row > a { font: 700 .95rem/1 var(--display); color: var(--light); text-decoration: none; border-bottom: 3px solid var(--light-soft); padding-bottom: 4px; }
+.ch-row.top { background: var(--light); color: var(--ink); padding: 18px; margin: 0 -18px 8px; border: 0; box-shadow: var(--lift-dark); }
+.ch-row.top .why span { color: var(--ink-soft); }
+.ch-row.top .why .plus::before { color: var(--ink); }
+.ch-row.top > a { color: var(--ink); border-color: var(--coral); }
+.ch-row.top h4::after { content: "Start here"; font: 700 .75rem/1 var(--display); background: var(--coral); color: var(--ink); padding: 5px 7px; margin-left: 10px; vertical-align: middle; }
+.ch-row.low { opacity: .5; }
+.close .actions { margin-top: 56px; }
+
+/* Narrow: one column everywhere; the route drops vertically through the benchmark */
+@media (max-width: 1000px) {
+  .replies { grid-template-columns: minmax(0, 1fr); }
+  .flow { grid-template-columns: minmax(0, 1fr); }
+  .flow::before { left: 28px; right: auto; top: 0; bottom: 0; width: 14px; height: auto; margin: 0; }
+  .packet { display: none; }
+  .fbox, .fpair { margin-left: 56px; }
+  .fpair .fbox { margin-left: 0; }
+  .ch-grid { grid-template-columns: minmax(0, 1fr); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .chip, .replies .panel, .compare mark, .slot, .opts, .opts img, .opts span, .f-step, .ex-turns li, .meter .dot, .ch-row { transition: none !important; }
+  .chip:hover, .replies .panel.dim, .replies .panel.hit, .slot.varied { transform: none; }
+  .packet { animation: none; left: 50%; }
+  .js .ex-turns li.later { transform: none; }
+}
+
+/* Ferret exchange */
 .exchange { margin: 0; background: var(--light); color: var(--ink); box-shadow: var(--lift), 0 60px 90px -40px rgba(20, 23, 43, .45); }
 .ex-sub { background: var(--ink); color: var(--light); padding: 20px 24px; }
 .ex-sub b { font: 700 .95rem/1 var(--display); color: var(--light-soft); }
@@ -513,20 +594,11 @@ a { color: inherit; text-decoration-thickness: 2px; text-underline-offset: .2em;
 .foot a:hover { text-decoration: underline; }
 
 /* ---------- Narrow screens ---------- */
-@media (max-width: 959px) {
-  .bench, .ferret { grid-template-columns: minmax(0, 1fr); }
-  .mark-diagram { max-width: 460px; margin-top: 56px; }
-  }
 @media (max-width: 640px) {
   .top { flex-wrap: wrap; padding-right: 0; }
   .top .bar { width: 100%; }
   .top nav { margin: 0; padding: 4px var(--gutter) 0 var(--col); gap: 0 14px; font-size: .95rem; }
   .top::after { content: ""; position: absolute; left: var(--stem-left); width: var(--stem); top: calc(clamp(16px, 3vw, 40px) + 64px); bottom: 0; background: var(--ink); }
-  .bench-list div { grid-template-columns: minmax(0, 1fr); gap: 4px; }
-  .mark-diagram { margin-top: 32px; }
-  .mark-diagram figcaption { position: static; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 20px; }
-  .tag { position: static; max-width: none !important; width: auto !important; }
-  .mark-diagram .lead { display: none; }
   .foot { padding-left: calc(var(--stem) * 6 + 32px); min-height: 0; }
   .foot-name { margin-left: 0; }
   .foot { padding-right: 24px; }

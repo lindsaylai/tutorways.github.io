@@ -233,7 +233,17 @@
       {
         "name": "settle",
         "value": "rotateX 14deg, translateY 56px, scale .96 to none; view timeline, entry 0% to cover 40%",
-        "purpose": "Benchmark diagram and Ferret exchange tilt back to flat as they enter."
+        "purpose": "Benchmark flow tilts back to flat as it enters."
+      },
+      {
+        "name": "packet",
+        "value": "6s travel, cubic-bezier(.65, 0, .35, 1), infinite",
+        "purpose": "Coral square travelling the benchmark flow route. Off under reduced motion."
+      },
+      {
+        "name": "reorder",
+        "value": "FLIP translateY, 0.6s route ease",
+        "purpose": "Chooser rows sliding to their new rank."
       }
     ],
     "breakpoints": [

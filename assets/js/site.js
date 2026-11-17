@@ -145,3 +145,145 @@
   }, { rootMargin: "-50% 0px -50% 0px", threshold: 0 });
   shots.forEach(function (s) { io.observe(s); });
 })();
+
+// Compare: highlight one trait across the three captured replies.
+(function () {
+  var sec = document.querySelector("[data-compare]");
+  if (!sec) return;
+  var chips = sec.querySelectorAll(".chip"), panels = sec.querySelectorAll(".replies .panel"), marks = sec.querySelectorAll("mark");
+  chips.forEach(function (c) {
+    c.addEventListener("click", function () {
+      var on = c.getAttribute("aria-pressed") !== "true";
+      chips.forEach(function (x) { x.setAttribute("aria-pressed", "false"); });
+      c.setAttribute("aria-pressed", String(on));
+      var t = on ? c.dataset.t : null;
+      marks.forEach(function (m) { m.classList.toggle("on", m.dataset.t === t); });
+      panels.forEach(function (p) {
+        var has = !!t && p.dataset.has.split(" ").indexOf(t) >= 0;
+        p.classList.toggle("hit", has);
+        p.classList.toggle("dim", !!t && !has);
+      });
+    });
+  });
+})();
+
+// Benchmark: choose what varies; that slot cycles through its options, the other locks.
+(function () {
+  var sec = document.querySelector("[data-bench]");
+  if (!sec) return;
+  var still = window.matchMedia("(prefers-reduced-motion: reduce)");
+  var chips = sec.querySelectorAll(".chip"), timer = null, visible = false, active = "surface";
+  function cycle() {
+    clearInterval(timer);
+    sec.querySelectorAll(".opts .now").forEach(function (n) { n.classList.remove("now"); });
+    var items = sec.querySelectorAll('.slot[data-slot="' + active + '"] .opts > *'), i = 0;
+    items[0].classList.add("now");
+    // Only animate while the section is on screen.
+    if (still.matches || !visible) return;
+    timer = setInterval(function () { items[i].classList.remove("now"); i = (i + 1) % items.length; items[i].classList.add("now"); }, 900);
+  }
+  function set(v) {
+    active = v;
+    chips.forEach(function (c) { c.setAttribute("aria-pressed", String(c.dataset.v === v)); });
+    sec.querySelectorAll(".slot").forEach(function (s) {
+      var varied = s.dataset.slot === v;
+      s.classList.toggle("varied", varied);
+      s.classList.toggle("held", !varied);
+      s.querySelector(".state").textContent = "3 · " + (varied ? "Varied" : "Held fixed");
+    });
+    cycle();
+  }
+  chips.forEach(function (c) { c.addEventListener("click", function () { set(c.dataset.v); }); });
+  if ("IntersectionObserver" in window) {
+    new IntersectionObserver(function (es) { visible = es[0].isIntersecting; cycle(); }).observe(sec.querySelector(".flow"));
+  }
+  set("surface");
+})();
+
+// Ferret: each step reveals the exchange up to its turn. Discrete activation, one observer.
+(function () {
+  var sec = document.querySelector("[data-ferret]");
+  if (!sec || !("IntersectionObserver" in window)) return;
+  var steps = sec.querySelectorAll(".f-step"), turns = sec.querySelectorAll(".ex-turns li"), meter = sec.querySelector(".meter");
+  var label = { none: "not shown yet", probing: "probing", shown: "shown" };
+  // Narrow screens show the whole exchange at once, so the marker shows the end state.
+  var wide = window.matchMedia("(min-width: 960px) and (min-height: 620px)");
+  function show(step) {
+    if (!wide.matches) step = steps[steps.length - 1];
+    steps.forEach(function (s) { s.classList.toggle("is-active", s === step); });
+    var n = +step.dataset.upto;
+    turns.forEach(function (t, i) { t.classList.toggle("later", i >= n); });
+    meter.dataset.s = step.dataset.s;
+    meter.querySelector(".state").textContent = label[step.dataset.s];
+  }
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) { if (e.isIntersecting) show(e.target); });
+  }, { rootMargin: "-50% 0px -50% 0px" });
+  steps.forEach(function (s) { io.observe(s); });
+  show(steps[0]);
+})();
+
+// Chooser: three answers re-rank the eight surfaces, with reasons from the docs.
+(function () {
+  var sec = document.querySelector("[data-chooser]");
+  if (!sec) return;
+  var still = window.matchMedia("(prefers-reduced-motion: reduce)");
+  var facts = {
+    cli: { self: 1 }, slack: { self: 1 }, discord: { self: 1 }, jupyter: { self: 1, soon: 1 },
+    grok: { paid: 1 }, muse: { free: 1 }, dots: { soon: 1 }, duet: { soon: 1 }
+  };
+  var ans = { where: "none", always: "no", pay: "yes" };
+  var list = sec.querySelector(".ch-list");
+  var rows = Array.prototype.slice.call(list.children);
+  rows.forEach(function (r) { var w = document.createElement("p"); w.className = "why"; r.querySelector("div").appendChild(w); });
+
+  function score(id) {
+    var f = facts[id], why = [], n = 0;
+    function add(v, t) { n += v; why.push([v, t]); }
+    if (ans.where === "slack" && id === "slack") add(3, "Lives where your class already talks");
+    if (ans.where === "discord" && id === "discord") add(3, "Lives in your course server");
+    if (ans.where === "notebooks" && id === "jupyter") add(3, "Runs in the notebook students are stuck in");
+    if (ans.where === "none" && id === "cli") add(2, "Quickest to try, no chat platform needed");
+    if (ans.always === "yes") { if (f.self) add(-1, "Runs on your own setup"); else add(2, "Keeps the course on its own cloud computer"); }
+    else if (f.self) add(1, "You control the setup and the model");
+    if (f.paid) add(ans.pay === "no" ? -3 : 0, "Needs an eligible paid Grok Bot plan");
+    if (f.free) add(ans.pay === "no" ? 2 : 0, "Free with a usage limit, rolling out in the US");
+    if (f.soon) add(-1, "Setup guide not in the docs yet");
+    return { n: n, why: why };
+  }
+
+  function render() {
+    var before = {};
+    rows.forEach(function (r) { before[r.dataset.id] = r.getBoundingClientRect().top; });
+    var ranked = rows.map(function (r, i) { var s = score(r.dataset.id); return { r: r, n: s.n, why: s.why, i: i }; })
+      .sort(function (a, b) { return b.n - a.n || a.i - b.i; });
+    ranked.forEach(function (x, i) {
+      x.r.classList.toggle("top", i === 0);
+      x.r.classList.toggle("low", x.n < 0);
+      x.r.querySelector(".why").innerHTML = x.why.map(function (w) {
+        return '<span class="' + (w[0] > 0 ? "plus" : w[0] < 0 ? "minus" : "") + '">' + w[1] + "</span>";
+      }).join("");
+      list.appendChild(x.r);
+    });
+    if (still.matches) return;
+    // FLIP: slide each row from where it was to where it is now.
+    rows.forEach(function (r) {
+      var d = before[r.dataset.id] - r.getBoundingClientRect().top;
+      if (!d) return;
+      r.style.transition = "none";
+      r.style.transform = "translateY(" + d + "px)";
+      requestAnimationFrame(function () { requestAnimationFrame(function () { r.style.transition = ""; r.style.transform = ""; }); });
+    });
+  }
+
+  sec.querySelectorAll("[data-q]").forEach(function (g) {
+    g.addEventListener("click", function (e) {
+      var b = e.target.closest(".chip");
+      if (!b) return;
+      g.querySelectorAll(".chip").forEach(function (c) { c.setAttribute("aria-pressed", String(c === b)); });
+      ans[g.dataset.q] = b.dataset.a;
+      render();
+    });
+  });
+  render();
+})();
