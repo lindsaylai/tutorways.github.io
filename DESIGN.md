@@ -169,7 +169,7 @@ Three brand colours carry the system; four quiet neutrals handle secondary text 
 
 ### Hierarchy
 - **Display** (800, clamp 2.75 to 6rem, 0.98; clamp 2.6 to 4.75rem beside the map on wide screens): the opening headline only, capped at about 11ch.
-- **Headline** (800, clamp 2.4 to 4.5rem, 1): section headlines for Benchmark, Ferret and Close, 12 to 14ch.
+- **Headline** (800, clamp 2.4 to 4.5rem, 1): section headlines for Compare, Benchmark, Ferret and Close, 12 to 17ch.
 - **Headline, story** (800, clamp 2.1 to 3.4rem, 1.02): the tour cards that open each half of the map and the closing card.
 - **Title** (800, clamp 1.6 to 2.2rem, 1.05): each surface card's name, led by its 40px logo tile.
 - **Lede** (400, clamp 1.125 to 1.3rem, 1.55): the paragraph under the opening and Ferret headlines, about 46 to 52ch.
@@ -188,7 +188,11 @@ Three brand colours carry the system; four quiet neutrals handle secondary text 
 The page is a single vertical route. The stroke sits at `stem-left` from the viewport edge with width `stem`; every section's content starts at `col` (stroke, plus a gap of 20 to 64px), so headlines, tour cards and footer text share one left edge. The right edge is the `gutter`.
 
 - **The tour (opening and surfaces):** at 960px wide and 620px tall and above, a full-viewport stage sticks for the whole section. On these screens the tour is an Ink ground with grain. The stage holds the laptop photo (feathered into the Ink at its edges), the stem and the stop index. The headline and lede sit in Light on the left with the laptop to their right; a beat pushes the camera into the screen until it fills the stage, and then one shot per camera position (100svh each) scrolls a card over the stage's left side while the map zooms so its target fills the space right of the card. Below that size the tour stays on Light and the photo is a still picture under the headline, cropped to the laptop, and each surface card carries its own copy of the window, divided by hairline rules. Without JavaScript the map is hidden and the cards read as a list.
-- **Benchmark, Ferret:** two columns, text and figure, vertically centred, with large section padding (96 to 176px).
+- **Compare:** headline and lede, the question chip, trait chips, then the three captured replies in three columns (one column under 1000px).
+- **Benchmark:** headline and lede, the "What changes in a run?" toggle, then the five-stage flow across the full width (stacked under 1000px, with the route running down its left).
+- **Ferret:** copy on top; below it, on wide screens, the steps run in the left column (62svh each) while the exchange sticks on the right. Narrow screens show the whole exchange first, then the steps as a list.
+- **Close:** the three chooser questions on the left, the ranked surface list on the right (stacked under 1000px), then the docs action.
+- All four use the same section padding (96 to 176px).
 - **Footer:** the stroke stops short of the TW mark by the mark's own T-to-W gap, and the mark sits centred on the stroke's axis.
 
 Breakpoints: 960px wide and 620px tall (the sticky tour stage and zoom), 640px (header bar goes full width, the footer mark shrinks to 64px and moves to the left edge), 420px (the in-page "Surfaces" nav link drops). All spacing is fluid `clamp()`; there is no fixed grid.
@@ -210,7 +214,7 @@ Shadows are layered to behave like one soft light from above: a contact shadow, 
 
 ### Grain and settle
 - **Grain:** Ink and Coral grounds carry a 7% white fractal-noise tile (`--grain`) so large dark and coral fields read as material, not flat fills. Light grounds have none.
-- **Settle:** the benchmark diagram and the Ferret exchange tilt back to flat as they enter (14deg rotateX, 56px rise, 0.96 scale and 0.2 opacity to none), driven by a CSS view timeline. Static where unsupported or with reduced motion.
+- **Settle:** the benchmark flow tilts back to flat as they enter (14deg rotateX, 56px rise, 0.96 scale and 0.2 opacity to none), driven by a CSS view timeline. Static where unsupported or with reduced motion.
 
 ### Named Rules
 **The Flat Route Rule.** The stroke, the grounds, the header bar, buttons and stops are never shadowed. Lift is for the mock product panels and tour cards only.
@@ -219,7 +223,7 @@ Shadows are layered to behave like one soft light from above: a contact shadow, 
 
 Every box is square-cornered (0px): bars, buttons, stations, panels, logo tiles, code chips. Borders are heavy where they are structural (2px panel and card frames, 3px action underlines, 4px stop borders, 8px stops and hub on the map) and 1px where they only divide rows.
 
-The only curves come from the mark. The TW mark's semicircles appear in the mark itself (header wordmark, benchmark diagram, footer). Where the stroke crosses from one ground into another, it meets the boundary through quarter-circle fillets of radius 1.5 x stem, so the stroke appears to pour into the next ground (bottom of a section) or the next ground narrows into the stroke (top of a section). The fillet rule is pending user confirmation; see the note at the top of this file.
+The only curves come from the mark. The TW mark's semicircles appear in the mark itself (header wordmark, the map hub, footer). Where the stroke crosses from one ground into another, it meets the boundary through quarter-circle fillets of radius 1.5 x stem, so the stroke appears to pour into the next ground (bottom of a section) or the next ground narrows into the stroke (top of a section). The fillet rule is pending user confirmation; see the note at the top of this file.
 
 ### Named Rules
 **The Mark's Curves Rule.** A curve is allowed only if it is one of the mark's own: its semicircles, or the quarter-circle fillet where the stroke meets a ground (pending confirmation). No border-radius on boxes, no pill buttons, no rounded cards.
@@ -265,6 +269,21 @@ Inside the laptop screen (clipped to it). One fixed-size map (2600 x 1518 CSS px
 
 ### Tour cards
 Square cards (max 440px or 34vw) that scroll over the stage's left side: Card White with a 2px Ink border on the self-hosted half, Route Ink with a 2px Light border on the agent half. Surface cards open with a 40px logo tile and name, then the copy, the "Students ask" line and the setup guide link, whose underline is Coral.
+
+### Chips
+Square toggle buttons (`aria-pressed`) in Outfit 700: White with a 2px Ink border, Ink when pressed; on Ink grounds, outlined in Light and filled Light when pressed. Used for the compare traits, the benchmark toggle and the chooser answers.
+
+### Compare (same question, three replies)
+The three captured replies (Slack, Discord, Grok Bot) as product panels, each with a row of trait tags (solid when present, dashed and struck through when absent). Pressing a trait chip highlights the matching passages with a Coral tint and underline, lifts the replies that have it 6px and fades the rest to 35%. One trait at a time, so one highlight colour. A note says the tags describe these replies only and are not benchmark results.
+
+### Benchmark flow
+Five white boxes on one thick route stroke: test questions, the tutor (held fixed), the model and the surface (stacked), the judges, the measures. A Coral square travels the stroke. The toggle picks the varied slot: it goes Ink, scales 1.04 and cycles a Coral highlight through its options (the eight surface logos, or the four model kinds); the other slot goes dashed on Light with its options faded. The cycle runs only while the flow is on screen. No numbers anywhere.
+
+### Ferret playback
+Five steps, each revealing the exchange up to its turn (later turns sit at 0 opacity, 14px down). A marker on top of the exchange reads "not shown yet", "probing" (Coral dot) or "shown" (Ink dot). Discrete activation with one IntersectionObserver at mid-viewport.
+
+### Surface chooser
+Three chip questions re-rank the eight surfaces. Each row carries its reasons (+ in Light, − in Coral), taken only from facts on the site and in the docs; the top row turns Light with a Coral "Start here" tag, and rows that score below zero fade. Rows slide to their new places (FLIP, transform only). Without JavaScript the list still shows all eight with their guide links.
 
 ### Mock product panels
 Frames that show a real tutor reply on each surface.
